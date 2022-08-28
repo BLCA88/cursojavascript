@@ -12,7 +12,7 @@ while (deseo === null) { // Mientras deseo sea un valor nulo que se ejecute el s
     }// Si el valor ingresado no es un número o esta en blanco y ademas, si el valor es diferente a 30, 60 o 90
 
     let tasa = Number(prompt('Ingresa la tasa de interes'))
-    while (isNaN(tasa)) {
+    while (isNaN(tasa) || tasa === 0) {
         tasa = Number(prompt('Ingresa una tasa de interes correcta'))
     }//Si el valor ingresado no es un número o esta en blanco que avise: "Ingresa una tasa..."
 
@@ -27,7 +27,7 @@ while (deseo === null) { // Mientras deseo sea un valor nulo que se ejecute el s
     if (respuesta === 1) { // Condicional para volver a utilizar el simulador.
         deseo === null
     } else {
-        deseo = 1
+        deseo = respuesta
         alert ('Gracias por su visita')
     }
 }
