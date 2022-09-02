@@ -44,8 +44,4 @@ while (deseo === null) { // Mientras deseo sea un valor nulo que se ejecute el s
         deseo = respuesta
         alert ('Gracias por su visita')
     }     
-}
-
-
-
-     
+}     
