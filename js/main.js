@@ -1,24 +1,95 @@
 //Aprendizaje rutina, palabras, numeros y hora
 
-//Fecha en español para que aprenda los dias, meses y años, ademas la hora y minutos.
-const date = new Date();
-const [hora, minutos, segundos] = [date.getHours(), date.getMinutes(), date.getSeconds()];
-const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'junio',
-'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-const dias = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']
-alert (`Buen dia Benja, hoy es ${dias[date.getDay()]}, ${date.getDate()} de ${meses[date.getMonth()]} de ${date.getUTCFullYear()}
-La hora es: ${hora}:${minutos}`)
-
 //Arrays con tareas que debe realizar para poder utilizar la tablet
-
-const tareasMañana = ['levantarse', 'baño', 'dientes', 'desayuno']
-const tareasMedia = ['almuerzo', 'dientes', 'trampolin', 'picar']
-const tareasTarde = ['merienda', 'jugar', 'bañarse']
-const tareasNoche = ['cenar', 'jugar', 'ordenar', 'pastilla', 'baño']
+const tareasMañana = ['Levantarse', 'Baño', 'Dientes', 'Desayuno']
+const tareasMedia = ['Almuerzo', 'Dientes', 'Trampolin', 'Picar']
+const tareasTarde = ['Merienda', 'Jugar', 'Bañarse']
+const tareasNoche = ['Cenar', 'Jugar', 'Ordenar', 'Pastilla', 'Baño']
 const vocales = ['a', 'e', 'i', 'o', 'u']
 
-//Array con objetos de vestimenta
+//<----------<Eventos>------------>//
+let card = document.querySelectorAll('.containerFrontBack')
+let boton = document.querySelectorAll('.buton')
+let containerBoton = document.querySelectorAll('.divB')
+let containerFrontBack = document.querySelectorAll('.containerFrontBack')
+let containerFront = document.querySelectorAll('.containerFront')
+let h2 = document.querySelectorAll('.h2')
 
+//Evento en tarjeta para mostrar el completado cuando se preiona el boton SI
+function ocultarDiv (element){
+    let divClickeado = element.parentElement
+    divClickeado.classList.add("visibilityNone")
+    divClickeado.lastElementChild.classList.remove("visibilityNone")
+    divClickeado.lastElementChild.classList.add("visibilityYes")
+}
+
+boton.forEach(element => {       
+    if (element.name === 'si') {
+        element.addEventListener('click', mensaje1)
+        element.addEventListener('click', function(){ocultarDiv(element)})     
+    } else if (element.name === 'no') {
+        element.addEventListener('click', mensaje2)
+    }
+    function mensaje1() {    
+        alert('Muy bien Benja')                
+    }
+    function mensaje2() {    
+        alert('Tenes que completar la tarea')       
+    }      
+})
+// Funcion con evento para mostrar tarjetas
+function mostrarDiv (array) {
+    for (let contenedor of containerFront) {
+        let variable = contenedor.firstElementChild.innerHTML        
+        for (let elemento of array) {
+            if (variable == elemento){
+                contenedor.parentElement.classList.remove('displayNone')                                
+            } 
+        }            
+    }    
+}
+
+//funcion para agregar el 0 en hora, minutos y segundos
+function checkTime(i) {
+    if (i < 10) {        
+        i = "0" + i        
+    }
+    return i
+}
+//Fecha en español para que aprenda los dias, meses y años, ademas la hora y minutos.
+function fechaHora() {
+    let fecha = new Date()
+    let [hora, minutos, segundos] = [fecha.getHours(), fecha.getMinutes(), fecha.getSeconds()]                
+    hora = checkTime(hora)    
+    minutos = checkTime(minutos)
+    segundos = checkTime(segundos)
+    document.getElementById("reloj").innerHTML = hora + ":" + minutos + ":" + segundos    
+    const mes = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    const dias = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']
+    let diaActual = dias[fecha.getDay()]
+    let fechaActual = fecha.getDate()
+    let mesActual = mes[fecha.getMonth()]
+    let añoActual = fecha.getFullYear()
+    let date = diaActual+", "+fechaActual+" "+mesActual+" "+añoActual    
+    document.getElementById("fecha").innerHTML = date
+    let refresh = setTimeout(function(){fechaHora()}, 500)
+    if (hora >= 10 && hora <= 12) {        
+        tareasCompletas(tareasMañana)
+    }else if (hora >= 13  && hora <= 14) {        
+        tareasCompletas(tareasMedia)
+    }else if (hora >= 16 && hora <= 18) {
+        tareasCompletas(tareasTarde)
+    }else if (hora >= 20) {
+        tareasCompletas(tareasNoche)                         
+    }          
+}
+//Para llamar automaticamente la funcion fechaHora
+const llamar = function (callback) {
+    callback()
+} 
+llamar(fechaHora)
+
+//Array con objetos de vestimenta
 let ropero = [ 
     {id: 1, material: 'algodon', tipo: 'remera manga corta', color: 'azul', diseño: 'ositos estampados'},
     {id: 2, material: 'algodon', tipo: 'remera manga larga', color: 'azul francia', diseño: 'liso'},
@@ -34,124 +105,28 @@ let vestimenta = ropero.map(function(ropa){  // Filtra los tipo de ropas para co
     return (`${ropa.tipo} ${ropa.color}`)
 })
 
-//<-------------------------<DOM>--------------------------->
-let rutaImagenes = []//Array vacio para rutas de imagenes
-let main = document.querySelector('.mainIndex')//Main existente
-let divFront
-let divBack
-
-//Funcion para crear etiqueta imagen con class y src
-function imagenes (image) {                       
-    let img = document.createElement('img')        
-    img.src = image;    
-    img.classList.add('img')    
-    divFront.append(img)       
-}
-//Funcion para crear una card section con 2 div para crear animacion de giro
-function crearCard() {    
-    section = document.createElement('section')
-    section.classList.add('containerFrontBack')
-    divFront = document.createElement('div')
-    divBack = document.createElement('div')
-    divFront.classList.add('containerFront')
-    divBack.classList.add('containerBack')
-    main.append(section)
-    section.append(divFront, divBack)    
-}
-
-
-let listaVocales = [] // aun no lo use pero lo voy a necesitar para crear unas tareas
-
-/* Funcion de tareas completas para que utilice el Si y el No y aprenda lenguaje (La funcion va recorriendo cada elemento del array consultando si se
- realizo, crea con funcion CrearCard una estructura en DOM, crea elementos h2 y p dentro de cada div y separa las letras para compararlas con las vocales.) */
- 
 function tareasCompletas (array) {
     for (let i = 0; i < array.length; i++) {                
-        let arrayVocales = []        
-        let tareaCompleta = prompt ('Completaste la tarea ' + array[i] + '?')
+        let arrayVocales = []
         const letras = array[i].split('')
-        rutaImagenes.push(`./images/${array[i]}.png`)                        
-        if (tareaCompleta === 'Si' || tareaCompleta === 'si') {
-            crearCard()
-            let titulo = document.createElement('h2')
-            let titulo2 = document.createElement('h2')
-            titulo.innerText = `${array[i]}`
-            titulo2.innerText = 'Vocales'
-            titulo2.classList.add('h2')
-            titulo.classList.add('h2')
-            let parrafo = document.createElement('p')
-            parrafo.innerText = 'Completado'
-            parrafo.classList.add('p')    
-            divFront.append(titulo)
-            divBack.append(titulo2)            
-            imagenes(rutaImagenes[i])
-            divFront.append(parrafo)                                  
+        mostrarDiv(array)                                       
+        /* if (tareaCompleta === 'Si' || tareaCompleta === 'si') {                                  
             for (const elemento of vocales) {
                 let resultadoFilter = letras.filter(letra => letra === elemento)
                 if (resultadoFilter[0] != undefined) {
                     arrayVocales.push(resultadoFilter[0])              
                 }                                                             
             }                                                           
-            listaVocales.push(arrayVocales)
-            let parrafoVocales = document.createElement('p')
-            parrafoVocales.classList.add('p')
-            parrafoVocales.innerText = arrayVocales
-            divBack.append(parrafoVocales)            
-            let consulta = prompt('Escribe las vocales que tiene ' + array[i])
+            listaVocales.push(arrayVocales)           
             if (consulta == arrayVocales) {                
                 alert ('Muy bien Benja, la respuesta es: ' + arrayVocales)                                
             }else                
                 alert ('Incorrecto, la respuesta correcta es ' + arrayVocales)                            
-        }else if (tareaCompleta != 'Si' && tareaCompleta != 'si'){
-            alert('Te falta completar la tarea')
-            i = i - 1
-        }
-    } 
-    rutaImagenes.splice(0, rutaImagenes.length)   
-    return alert('Muy bien Benja!!! las tareas ' + array + ' estan completas.')            
-}
-
-//Funcion con setTime y horarios para que aprenda a usar las palabras y leer.
-function tareas () {     
-    if (hora >= 10 && hora <= 11) {
-        alert (`Tenes que completar estas tareas para poder jugar con la tablet: 
-01: ${tareasMañana[0]} 02: ${tareasMañana[1]} 03: ${tareasMañana[2]} 04: ${tareasMañana[3]}`)
-        tareasCompletas(tareasMañana)       
-        let vestir = prompt(`Que remera y pantalon te gustaria usar hoy?
-        ${vestimenta[0]}
-        ${vestimenta[1]}
-        ${vestimenta[2]}
-        ${vestimenta[4]}        
-        `)
-        alert (vestir)
-        contador = contador + 1
-        setTimeout(tareas, 10800000)
-    }else if (hora >= 13  && hora <= 14) {
-        alert (`Tenes que completar estas tareas para poder jugar con la tablet: 
-01: ${tareasMedia[0]} 02: ${tareasMedia[1]} 03: ${tareasMedia[2]} 04: ${tareasMedia[3]}`)
-        tareasCompletas(tareasMedia)
-        contador = contador + 1
-        setTimeout(tareas, 10800000)
-    }else if (hora >= 16 && hora <= 18) {
-        alert (`Tenes que completar estas tareas para poder jugar con la tablet: 
-01: ${tareasTarde[0]} 02: ${tareasTarde[1]} 03: ${tareasTarde[2]}`)
-        tareasCompletas(tareasTarde)
-        contador = contador + 1
-        setTimeout(tareas, 14400000)
-    }else if (hora >= 20) {
-        alert (`Ultimas tareas antes de ir a dormir: 
-01: ${tareasNoche[0]} 02: ${tareasNoche[1]} 03: ${tareasNoche[2]} 04: ${tareasNoche[3]} 05: ${tareasNoche[4]}`)
-        tareasCompletas(tareasNoche)     
-        let vestir = prompt(`Que te gustaria ponerte para dormir?
-        ${vestimenta[0]}
-        ${vestimenta[1]}
-        ${vestimenta[2]}
-        ${vestimenta[4]}        
-        `)
-        alert (vestir)
-        alert ('Buenas Noches Benja')
-        contador = 0
-        setTimeout(tareas, 50400000)                           
+        } */
     }
 }
-setTimeout(tareas, 1000)
+
+
+
+
+
