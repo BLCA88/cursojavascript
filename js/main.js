@@ -112,6 +112,9 @@ class ropero {
         this.diseño = diseño 
     }
 }
+
+/* Funcion para escuchar el evento del boton SI y NO para mostrar modal y crear divHtml para guardar informacion en localStorage y 
+si se reinicia la pagina, mostrar la tarjeta completado. */
 let divHtml = []
 
 boton.forEach(element => {           
@@ -178,4 +181,3 @@ function guardarLocal () {
         }
     }
 }
-
