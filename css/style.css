@@ -1,21 +1,93 @@
+body {    
+    background-color: azure;
+    background-size: 600% 400%;
+    border-radius: 0% 0% 100% 80%;   
+}
+
+.modalSi, .modalNo {
+    position: fixed;
+    top: 0;
+    left: 0;    
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+.mostrarModal {
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.containerModal {
+    margin: auto;
+    width: 80%;
+    max-width: 600px;    
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+}
+
+.tituloModal {
+    font-size: 2rem;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+.imagenModal {
+    width: 90%;
+    max-width: 300px;
+}
+
+.botonCerrar {
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(225, 113, 82) ;
+    padding: 1em 3em;
+    border: 1px solid white;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 400;
+    font-family: sans-serif;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.botonCerrar:hover {
+    color: rgb(225, 113, 82);
+    background-color: white;
+    border: 1px solid rgb(225, 113, 82) ;
+}
+
+
 .mainIndex {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas: "hora" "card";           
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "hora" "card" "vestimenta" "colorNum";           
     justify-content: space-between;
-    align-content: center;           
+    align-content: center;
+              
 }
-
-.h1 {
-    font-family: sans-serif;
-    font-weight: 400;
-    margin: 10px;
-}
+/*----------------<Seccion Reloj>------------*/
 
 .containerReloj {
     grid-area: hora;
-    background-color:rgb(255, 255, 255);        
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f8f8a9;
+    backdrop-filter: blur(20px); 
+    box-shadow: 1px 1px 5px 1px rgba(46, 44, 44, 0.295);       
     width:50%;
     text-align:center;
     border-radius:5px;
@@ -27,9 +99,14 @@
 #reloj{
     background-color:rgb(255, 255, 255);
     font-family: sans-serif;
-    font-size:60px;
+    font-size:50px;
     text-shadow:0px 0px 1px #fff;
-    color:rgb(21, 20, 20);
+    color:rgb(43, 234, 123);
+    margin: 20px;
+    border: 1px transparent;
+    background-color: rgb(79, 80, 80);
+    width: 200px;
+    border-radius: 10px;    
 }
 
 #fecha {
@@ -42,6 +119,9 @@
 .h1 {
     font-family: sans-serif;
     font-size: 40px;
+    letter-spacing:10px;
+    font-weight: 400;
+    margin: 5px;
 }
 
 .sectionCard {
@@ -56,6 +136,7 @@
     50%{transform: scale(1.04, 1.04);}
     100% {transform: scale(1, 1);}
 }
+/*----------------<Seccion Tareas>------------*/
 
 
 .containerFrontBack {
@@ -67,7 +148,7 @@
     margin-top: 50px;
     perspective: 1000px;    
     transition: transform 0.6s;    
-    transform-style: preserve-3d;    
+    transform-style: preserve-3d;        
     box-shadow: 1px 1px 4px 2px rgba(40, 39, 39, 0.154);
     text-align: center;    
     border-radius: 10px;    
@@ -81,16 +162,15 @@
     height: 100%;
     border-radius: 20px;        
     backface-visibility: hidden;
-    background-color: rgb(255, 255, 255);
-    
-    
+    background-color: #f8f8f8a9;
+    backdrop-filter: blur(20px);   
 }
 .containerBack {
     transform: rotateY(180deg);    
 }
 
 .h2 {
-    font-size: large;
+    font-size: x-large;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-transform: uppercase;
     margin: 20px;
@@ -111,9 +191,24 @@
 }
 
 .buton {
+    background-color: #2735ad;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+    cursor: pointer;
     width: 70px;
     height: 30px;    
     margin: 30px 10px 0 10px;
+    transition: background-color .4s;
+    margin-top: 40px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+.buton:hover {
+    background-color: white;
+    color: #2735ad;
+    border: 1px solid #2735ad;
 }
 
 .visibilityNone {
@@ -124,5 +219,49 @@
 }
 .displayNone {
     display: none;
+}
+.displayYes {
+    display: block;
+}
+/*----------------<Seccion Vestimenta>------------*/
+.vestimenta {
+    grid-area: vestimenta;
+    background-color: #a18cd1;
+}
+
+/*----------------<Seccion Colores y Números>------------*/
+.coloresNumeros {        
+    grid-area: colorNum;
+    display: flex;    
+    box-shadow: 0px 4px 9px 2px rgba(81, 79, 79, 0.252) inset;
+    width: 100%;
+    height: 400px;
+}
+
+.coloresPrimarios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.rojo {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 100%;
+}
+.amarillo {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 100%;
+}
+
+.azul {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 100%;
 }
 

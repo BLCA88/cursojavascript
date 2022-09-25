@@ -7,18 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    
     <title>Document</title>
 </head>
 
 <body>
+    
+    <section class="modalSi">
+        <div class="containerModal">
+            <img src="/images/completado.svg" class="imagenModal">
+            <h2 class="tituloModal">¡Muy Bien Benja!</h2>
+            <p class="botonCerrar" id="Si">Cerrar</p>
+        </div>
+    </section>
+    <section class="modalNo">
+        <div class="containerModal">
+            <img src="/images/sin completar.svg" class="imagenModal">
+            <h2 class="tituloModal">¡Tenes que completar la tarea!</h2>
+            <p class="botonCerrar" id="No">Cerrar</p>
+        </div>
+    </section>
     <main class="mainIndex">
         <section>        
             <div class="containerReloj">
                 <h1 class="h1">Hola Benjamin</h1>
-                <div id="reloj"></div>
                 <div id="fecha"></div>
+                <div id="reloj"></div>                
             </div>
-        </section>        
+        </section>               
         <section class="sectionCard">
             <div class="containerFrontBack displayNone">
                 <div class="containerFront">
@@ -205,7 +221,7 @@
                     <div class="divB">
                         <button class="buton" name="si">Si</button>
                         <button class="buton" name="no">No</button>
-                        <p class="visibilityNone p">Completado</p>
+                        <p class="visibilityNone p">Completado</p>                        
                     </div>                   
                 </div>
                 <div class="containerBack">
@@ -228,10 +244,47 @@
                     <h2></h2>
                 </div>
             </div>
-
-        </section>    
+        </section>                
+        <!-- <section class="vestimenta">
+            <div class="containerFrontBack">
+                <div class="containerFront">
+                    <h2 class="h2">Cenar</h2>
+                    <div>
+                        <img src="./images/cenar.png" alt="" class="img">
+                    </div>                    
+                    <div class="divB">
+                        <button class="buton" name="si">Si</button>
+                        <button class="buton" name="no">No</button>
+                        <p class="visibilityNone p">Completado</p>
+                    </div>                   
+                </div>
+                <div class="containerBack">
+                    <h2></h2>
+                </div>
+            </div>
+        </section>
+        <section class="coloresNumeros">
+            <h2 class="h2">Colores Primarios</h2>
+            <div class="coloresPrimarios">
+                <div class="rojo">
+                    <div>
+                        <h3>ROJO</h3>
+                    </div>
+                </div>
+                <div class="amarillo">
+                    <div>
+                        <h3>AMARILLO</h3>
+                    </div>
+                </div>
+                <div class="azul">
+                    <div>
+                        <h3>AZUL</h3>
+                    </div>
+                </div>                
+            </div>
+        </section>  -->           
     </main>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script>     
 </body>
 
 </html>
