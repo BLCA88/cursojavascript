@@ -55,20 +55,14 @@ let cerrarModalNo= document.getElementById('No')
 
 // Funcion con evento para mostrar tarjetas
 function mostrarDiv (array) {
-    for (let contenedor of containerFront) {
-        let variable = contenedor.firstElementChild.innerHTML                
-        for (let elemento of array) {            
-            if (variable === elemento){
-                contenedor.parentElement.classList.remove('displayNone')                                                
-            } 
-        }            
-    }    
-}
-
-function tareasCompletas (array) {
     for (let i = 0; i < array.length; i++) {        
-        mostrarDiv(array)
-    }
+        for (let contenedor of containerFront) {
+            let variable = contenedor.firstElementChild.innerHTML                
+            for (let elemento of array) {
+                let mostrar = variable === elemento && contenedor.parentElement.classList.remove('displayNone')           
+            }            
+        }
+    }        
 }
 
 const fecha = new Date()
@@ -81,22 +75,22 @@ function horario (){
         location.reload()
         localStorage.clear()        
     }else if (hora >= 10 && hora < 12 ) {       
-        tareasCompletas(tareasMañana)        
+        mostrarDiv(tareasMañana)        
     }else if (hora == 12 && minutos == 00 && segundos == 0){
         location.reload()
         localStorage.clear()
     }else if (hora >= 12  && hora < 16) {
-        tareasCompletas(tareasMedia)                        
+        mostrarDiv(tareasMedia)                        
     }else if (hora == 16 && minutos == 00 && segundos == 0) {       
         location.reload()
         localStorage.clear()
     }else if (hora >= 16 && hora < 20){
-        tareasCompletas(tareasTarde)
+        mostrarDiv(tareasTarde)
     }else if (hora == 20 && minutos == 00 && segundos == 0) {       
         location.reload()
         localStorage.clear()
     }else if (hora >= 0) {
-        tareasCompletas(tareasNoche)                                
+        mostrarDiv(tareasNoche)                                
     }
     let refresh = setTimeout(function(){horario()}, 1100)
 }
@@ -124,7 +118,7 @@ boton.forEach(element => {
             element.parentElement.classList.add('visibilityNone')
             element.parentElement.lastElementChild.classList.remove('visibilityNone')
             element.parentElement.lastElementChild.classList.add('visibilityYes')
-            let propiedadPadre = element.parentElement            
+            let propiedadPadre = element.parentElement             
             if (propiedadPadre.classList.contains('visibilityNone')){
                 divHtml.push(propiedadPadre.offsetParent.outerHTML)
                 guardarLocal()                
