@@ -51,8 +51,6 @@ let modalNo = document.querySelector('.modalNo')
 let cerrarModalSi= document.getElementById('Si')
 let cerrarModalNo= document.getElementById('No')
 
-
-
 // Funcion con evento para mostrar tarjetas
 function mostrarDiv (array) {
     for (let i = 0; i < array.length; i++) {        
@@ -113,8 +111,9 @@ let divHtml = []
 
 boton.forEach(element => {           
     if (element.name === 'si') {
-        element.addEventListener('click', () => {            
-            modalSi.classList.add('mostrarModal')            
+        element.addEventListener('click', () => {
+            alertSi()            
+            //modalSi.classList.add('mostrarModal')            
             element.parentElement.classList.add('visibilityNone')
             element.parentElement.lastElementChild.classList.remove('visibilityNone')
             element.parentElement.lastElementChild.classList.add('visibilityYes')
@@ -126,16 +125,44 @@ boton.forEach(element => {
         })                      
     } else if (element.name === 'no') {
         element.addEventListener('click', () => {
-            modalNo.classList.add('mostrarModal')            
+            //modalNo.classList.add('mostrarModal')
+            alertNo()            
         })
     }          
 })
-cerrarModalSi.addEventListener('click', () => {
+/*----------------------------<Modales sin librerias>-------------------------/*
+/* cerrarModalSi.addEventListener('click', () => {
     modalSi.classList.remove('mostrarModal')               
 })
 cerrarModalNo.addEventListener('click', () => {
     modalNo.classList.remove('mostrarModal')               
-})
+}) */
+/*----------------------------------------------------------------------------*/
+//Modal con SwitAlert2
+function alertSi() {
+    Swal.fire({
+        title: '¡Muy bien Benja!',
+        customClass :{
+            title: 'h2',
+            confirmButton: 'btn btn-success'
+        },
+        buttonsStyling: false,         
+        imageUrl: './images/completado.svg',
+        confirmButtonText: 'Cerrar',
+        width: '37rem'        
+    })
+}
+
+//Modal con SwitAlert1 
+function alertNo() {
+    swal({        
+        title: '¡Tenés que completar la tarea!',               
+        icon: './images/sin_completar.svg',
+        button: {
+            text: 'Cerrar'
+        }
+    })
+}
 
 //Funcion, ciclos y eventos para mantener el divHtml de las tarjetas  
 
