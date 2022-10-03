@@ -110,7 +110,6 @@ body {
     background-color: white;
     border: 1px solid rgb(242, 61, 44);
 }
-
 /*------------------------------------------------*/
 /*------------<Style Modal>---------*/
 /* .botonCerrar {
@@ -145,7 +144,23 @@ body {
     align-content: center;
               
 }
-/*----------------<Seccion Reloj>------------*/
+/*----------------<Seccion Reloj - Tiempo>------------*/
+.sectionTW {
+    display: flex;
+}
+.container-sm {    
+    margin: 0;
+}
+.containerImg {
+    text-align: center;    
+}
+.card {
+    flex-direction: column;
+    width: 15rem;
+    height: 15rem;
+    margin-top: 18px;
+}
+
 
 .containerReloj {
     grid-area: hora;
@@ -158,7 +173,7 @@ body {
     width:50%;
     text-align:center;
     border-radius:5px;
-    margin:0 auto;
+    margin-left: 380px;
     margin-top:20px;
     border: 10px solid ;
     border-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) 1;    
