@@ -35,7 +35,7 @@ function fechaHora() {
     let date = diaActual + ", " + fechaActual + " " + mesActual + " " + añoActual
     document.getElementById("fecha").innerHTML = date
 
-    //let refresh = setTimeout(function(){fechaHora()}, 500)
+    let refresh = setTimeout(function(){fechaHora()}, 500)
     return (hora, minutos, segundos)
 }
 //Para llamar automaticamente la funcion fechaHora
