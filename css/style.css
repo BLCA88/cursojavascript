@@ -111,28 +111,7 @@ body {
     border: 1px solid rgb(242, 61, 44);
 }
 /*------------------------------------------------*/
-/*------------<Style Modal>---------*/
-/* .botonCerrar {
-    margin-top: 20px;
-    text-decoration: none;
-    color: white;
-    background-color: rgb(225, 113, 82) ;
-    padding: 1em 3em;
-    border: 1px solid greenyellow;
-    border-radius: 6px;
-    display: inline-block;
-    font-weight: 400;
-    font-family: sans-serif;
-    transition: background-color .3s;
-    cursor: pointer; 
-    box-shadow: none;
-}
 
-.botonCerrar:hover {
-    color: rgb(225, 113, 82);
-    background-color: white;
-    border: 1px solid rgb(225, 113, 82);
-}  */
 /*-----------------------------------*/
 
 .mainIndex {
@@ -229,13 +208,14 @@ body {
     height: 300px;
     margin-top: 50px;
     perspective: 1000px;    
-    transition: transform 0.6s;    
+    transition: transform 1.3s;       
     transform-style: preserve-3d;        
     box-shadow: 1px 1px 4px 2px rgba(40, 39, 39, 0.154);
     text-align: center;    
     border-radius: 10px;    
 }
-.containerAnimation {
+
+.rotation {
     transform: rotateY(180deg);    
 }
 .containerFront, .containerBack {
@@ -245,11 +225,12 @@ body {
     border-radius: 20px;        
     backface-visibility: hidden;
     background-color: #f8f8f8a9;
-    backdrop-filter: blur(20px);   
+    backdrop-filter: blur(20px);           
 }
 .containerBack {
-    transform: rotateY(180deg);    
+    transform: rotateY(180deg);   
 }
+
 
 .h2 {
     font-size: x-large;
@@ -346,4 +327,47 @@ body {
     background-color: blue;
     border-radius: 100%;
 }
+
+/*----------------<Card Back Vocales>------------*/
+
+.h3 {
+    font-size: 1.5rem;
+}
+
+.divButon {
+    display: flex;
+    flex-direction: column;    
+}
+
+.botonOpcion {    
+    text-decoration: none;
+    color: white;
+    background-color: #2735ad ;
+    padding: .7em 3em;
+    margin: 11px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 400;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    transition: background-color .3s;
+    cursor: pointer; 
+    box-shadow: none;        
+}
+.b1 {
+    order: 1;
+}
+.b2 {
+    order: 2;
+}
+.b3 {
+    order: 3;
+}
+
+.botonOpcion:hover {
+    color: #2735ad;
+    background-color: white;
+    border: 1px solid #2735ad;
+} 
 
