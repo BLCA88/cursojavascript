@@ -92,8 +92,7 @@ let vocalesCompletas = []
 
 function mostrarDiv(array) {
     for (const contenedor of containerFrontBack) {
-        let texto = contenedor.firstElementChild.firstElementChild.innerHTML 
-        console.log(texto)            
+        let texto = contenedor.firstElementChild.firstElementChild.innerHTML        
         for (let elemento of array) {            
             let mostrar = texto === elemento && contenedor.classList.remove('displayNone')
             if (texto === elemento) {
@@ -109,8 +108,8 @@ function mostrarDiv(array) {
                 let vocalesSeparadas = arrayVocales.join('')
                 vocalesCompletas.push(arrayVocales.join(''))                                         
                 let contenedorBack = contenedor.lastElementChild
-                console.log(contenedorBack)                
-                let divBack = document.getElementById('contDiv')                
+                let divBack = document.createElement('div')
+                divBack.classList.add('divBack')
                 contenedorBack.append(divBack)                
                 divBack.innerHTML =
                     `<h3 class="h3">¿Que vocales tiene ${elemento}?</h3>
@@ -204,15 +203,13 @@ let botonOpcion3 = document.querySelectorAll('.b3')
 
 botonOpcion.forEach(propiedad => {          
     propiedad.addEventListener('click', () => {
-        let rect = propiedad.getBoundingClientRect()
-        console.log('y: ' + Math.round(rect.y))
-        console.log('x: ' + Math.round(rect.x))
+        let rect = propiedad.getBoundingClientRect()        
         let x = Math.round(rect.x) + 200
         console.log(x)                
         Toastify({
             text: "¡Excelente, Benja!",
             offset: {
-              x: 487, 
+              x: x, 
               y: Math.round(rect.y) 
             },
           }).showToast();        
@@ -220,6 +217,10 @@ botonOpcion.forEach(propiedad => {
             if (iterator === propiedad.innerText){
                 propiedad.style.background = 'green'
                 //alertSi()
+            }else {
+                propiedad.nextElementSibling.addEventListener('click', () =>{
+                    propiedad.nextElementSibling.style.background = 'red'
+                })
             }
         }        
     })
