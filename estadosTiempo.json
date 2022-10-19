@@ -58,7 +58,7 @@
         {
             "id": "10n",
             "description": "Lluvia",
-            "imagen": "./images/weather_conditions/rain_partly_cloudy_nigth.png"
+            "imagen": "/images/weather_conditions/rain_partly_cloudy_nigth.png"
         },
         {
             "id": "11d",
