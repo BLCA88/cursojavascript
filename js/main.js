@@ -238,22 +238,17 @@ let botonOpcion3 = document.querySelectorAll('.b3')
 botonOpcion.forEach(propiedad => {          
     propiedad.addEventListener('click', () => {
         let rect = propiedad.getBoundingClientRect()        
-        let x = Math.round(rect.x) + 200
-        console.log(x)                
-        Toastify({
-            text: "¡Excelente, Benja!",
-            offset: {
-              x: x, 
-              y: Math.round(rect.y) 
-            },
-          }).showToast();        
+        let x = Math.round(rect.x) + 200               
         for (let iterator of vocalesCompletas) {
             if (iterator === propiedad.innerText){
                 propiedad.style.background = 'green'
-                //alertSi()
+                alertSi()
             }else {
                 propiedad.nextElementSibling.addEventListener('click', () =>{
                     propiedad.nextElementSibling.style.background = 'red'
+                })
+                propiedad.nextElementSibling.nextElementSibling.addEventListener('click', () =>{
+                    propiedad.nextElementSibling.nextElementSibling.style.background = 'red'
                 })
             }
         }        
