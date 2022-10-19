@@ -320,8 +320,8 @@ function guardarLocal() {
     }
 }
 
-//
-class ropero {
+//Para la proxima...
+/* class ropero {
     constructor(id, material, tipo, color, diseño) {
         this.id = id
         this.material = material
@@ -329,4 +329,4 @@ class ropero {
         this.color = color
         this.diseño = diseño
     }
-}
+} */
