@@ -12,7 +12,7 @@ const cardDiv = document.getElementById('containerCard')
 const clima = async() => {      
     const climaApi = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=sp&appid=5c77677b6df8e033cdb6f856910bbf53&units=metric`)
     const responseJson = await climaApi.json()
-    const weather = await fetch('./estadosTiempo.json')
+    const weather = await fetch('js/estadosTiempo.json')
     const weatherJson = await weather.json()
     let rutaImagen = []
     let estadoTiempo = []
