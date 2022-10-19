@@ -47,8 +47,7 @@ reiniciarTareas.addEventListener('click', () => {
     Swal.fire({
         title: `Resuelve la siguiente suma: ${numero1}+${numero2} `,
         html: 
-        '<input id="swal-input1" class="swal2-input">',
-        focusConfirm: false,               
+        '<input id="swal-input1" class="swal2-input">',                     
         confirmButtonText: 'Aceptar',        
         preConfirm: () => {
             let resultadoInput = document.getElementById('swal-input1').value            
@@ -56,9 +55,25 @@ reiniciarTareas.addEventListener('click', () => {
         },                       
     }).then((resultadoInput) => {        
         if (parseInt(resultadoInput.value) === resultado) {
-            console.log('es igual')
-            localStorage.clear()
-            location.reload()
+            Swal.fire({
+                icon: 'success',
+                title: `!Correcto!`,
+                confirmButtonText: '<i id="botonReiniciar" class="fa fa-thumbs-up"></i> Reiniciar',
+                preConfirm: () => {
+                    let botonReiniciar = document.getElementById('botonReiniciar')
+                    return(botonReiniciar)
+                },                
+            }).then((botonReiniciar) => {
+                if (botonReiniciar) {
+                    localStorage.clear()
+                    location.reload()
+                }
+            })
+        }else {
+            Swal.fire({
+                icon: 'error',
+                title: `¡Pu Puuu! El resultado era: ${resultado}`,                
+            }) 
         }
     })    
 })
