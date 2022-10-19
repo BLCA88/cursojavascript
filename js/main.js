@@ -115,8 +115,6 @@ const llamar = function (callback) {
 }
 llamar(fechaHora)
 
-
-
 //<-----------------<Vocales>-------------->//
 const vocales = 'aeiou'.split('')
 function vocalesAleatorias(array) {
