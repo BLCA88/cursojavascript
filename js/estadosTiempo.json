@@ -1,0 +1,94 @@
+{
+    "weather": [
+        {
+            "id": "01d",
+            "description": "Cielo Despejado",
+            "imagen": "./images/weather_conditions/clear_day.png"
+        },
+        {
+            "id": "01n",
+            "description": "Cielo Despejado",
+            "imagen": "./images/weather_conditions/clear_nigth.png"
+        },
+        {
+            "id": "02d",
+            "description": "Levemente Nublado",
+            "imagen": "./images/weather_conditions/mostly_clear_day.png"
+        },
+        {
+            "id": "02n",
+            "description": "Levemente Nublado",
+            "imagen": "./images/weather_conditions/mostly_clear_nigth.png"
+        },
+        {
+            "id": "03d",
+            "description": "Nublado",
+            "imagen": "./images/weather_conditions/cloudy.png"
+        },
+        {
+            "id": "03n",
+            "description": "Nublado",
+            "imagen": "./images/weather_conditions/cloudy.png"
+        },
+        {
+            "id": "04d",
+            "description": "Mayormente Nublado",
+            "imagen": "./images/weather_conditions/cloudy.png"
+        },
+        {
+            "id": "04n",
+            "description": "Mayormente Nublado",
+            "imagen": "./images/weather_conditions/cloudy.png"
+        },
+        {
+            "id": "09d",
+            "description": "Llovizna",
+            "imagen": "./images/weather_conditions/drizzle_mostly_clear_day.png"
+        },
+        {
+            "id": "09n",
+            "description": "Llovizna",
+            "imagen": "./images/weather_conditions/drizzle_mostly_clear_nigth.png"
+        },
+        {
+            "id": "10d",
+            "description": "Lluvia",
+            "imagen": "./images/weather_conditions/rain_partly_cloudy_day.png"
+        },
+        {
+            "id": "10n",
+            "description": "Lluvia",
+            "imagen": "./images/weather_conditions/rain_partly_cloudy_nigth.png"
+        },
+        {
+            "id": "11d",
+            "description": "Tormenta",
+            "imagen": "./images/weather_conditions/tstorm_mostly_clear_day.png"
+        },
+        {
+            "id": "11n",
+            "description": "Tormenta",
+            "imagen": "./images/weather_conditions/tstorm_mostly_clear_nigth.png"
+        },
+        {
+            "id": "13d",
+            "description": "Nieve",
+            "imagen": "./images/weather_conditions/snow_mostly_clear_day.png"
+        },
+        {
+            "id": "13n",
+            "description": "Nieve",
+            "imagen": "./images/weather_conditions/snow_mostly_clear_nigth.png"
+        },
+        {
+            "id": "50d",
+            "description": "Niebla",
+            "imagen": "./images/weather_conditions/fog_mostly_clear_day.png"
+        },
+        {
+            "id": "50n",
+            "description": "Niebla",
+            "imagen": "./images/weather_conditions/fog_mostly_clear_nigth.png"
+        }         
+    ]
+}

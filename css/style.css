@@ -1,51 +1,14 @@
+/*--------------<Index>-------------/*
 body {    
     background-color: azure;
     background-size: 600% 400%;
     border-radius: 0% 0% 100% 80%;   
 }
 
-.modalSi, .modalNo {
-    position: fixed;
-    top: 0;
-    left: 0;    
-    right: 0;
-    bottom: 0;
-    background-color: #111111bd;
-    display: flex;
-    opacity: 0;
-    z-index: 1;
-    pointer-events: none;
-    transition: opacity .3s;
-}
+/* .mainLogin {
+    background-color: green;
+} */
 
-.mostrarModal {
-    opacity: 1;
-    pointer-events: unset;
-}
-
-.containerModal {
-    margin: auto;
-    width: 80%;
-    max-width: 600px;    
-    background-color: #fff;
-    border-radius: 6px;
-    padding: 3em 2.5em;
-    display: grid;
-    gap: 1em;
-    place-items: center;
-    grid-auto-columns: 100%;
-}
-
-.tituloModal {
-    font-size: 2rem;
-    font-family: sans-serif;
-    margin-bottom: 10px;
-}
-
-.imagenModal {
-    width: 90%;
-    max-width: 300px;
-}
 /*----------------------<Swet Alert2>------------*/
 
 .btn, .btn-success {
@@ -119,25 +82,49 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
     grid-template-areas: "hora" "card" "vestimenta" "colorNum";           
-    justify-content: space-between;
-    align-content: center;
-              
+    justify-content: center;
+    align-content: center;                 
 }
-/*----------------<Seccion Reloj - Tiempo>------------*/
+
+
+/*----------------<Seccion Reloj - Tiempo - Boton Reiniciar>------------*/
+
 .sectionTW {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reload {
+    width: 10em;
+    height: 3rem;
+    border: 1px solid white;
+    background-color: #4ce4af;
+    transition: background-color .4s; 
+    color: white;
+    margin: 215px 40px 0 0;
+}
+.reload:hover {
+    background-color: white;
+    border: 1px solid #4ce4af;
+    color: #4ce4af;
 }
 .container-sm {    
     margin: 0;
 }
 .containerImg {
-    text-align: center;    
+    text-align: center;        
+}
+.imgClima{
+    width: 100px;
+    margin-top: 10px;
+    image-rendering: auto;
 }
 .card {
     flex-direction: column;
     width: 15rem;
     height: 15rem;
     margin-top: 18px;
+    border: 1px solid rgba(47, 228, 238, 0.776);
 }
 
 
@@ -151,8 +138,7 @@ body {
     box-shadow: 1px 1px 5px 1px rgba(46, 44, 44, 0.295);       
     width:50%;
     text-align:center;
-    border-radius:5px;
-    margin-left: 380px;
+    border-radius:5px;    
     margin-top:20px;
     border: 10px solid ;
     border-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%) 1;    
@@ -224,7 +210,7 @@ body {
     height: 100%;
     border-radius: 20px;        
     backface-visibility: hidden;
-    background-color: #f8f8f8a9;
+    background-color: #f8f8f8;
               
 }
 .containerBack {
@@ -370,6 +356,7 @@ body {
     background-color: white;
     border: 1px solid #2735ad;
 } 
+
 
 /* .fave {
     width: 70px;

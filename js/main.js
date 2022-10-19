@@ -1,13 +1,67 @@
 //Aprendizaje rutina, palabras, numeros y hora
-
+//<-------------------<API OPENWEATHERMAP>------------------->//
 //<-------------------<GEO>---------------------->//
 let latitude = -34.6
 let longitude = -58.45
 const geo = !navigator.geolocation.getCurrentPosition(position => {
     latitude = position.coords.latitude
     longitude = position.coords.longitude
-});
+})
+const sectionTW = document.getElementById('stw')
+const cardDiv = document.getElementById('containerCard')
+const clima = async() => {      
+    const climaApi = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=sp&appid=5c77677b6df8e033cdb6f856910bbf53&units=metric`)
+    const responseJson = await climaApi.json()
+    const weather = await fetch('js/estadosTiempo.json')
+    const weatherJson = await weather.json()
+    let rutaImagen = []
+    let estadoTiempo = []
+    weatherJson.weather.forEach(elemento =>{
+        responseJson.weather.forEach(element => {
+            if (element.icon === elemento.id) {
+                rutaImagen.push(elemento.imagen)
+                estadoTiempo.push(elemento.description)
+                sectionTW.append(cardDiv)
+                cardDiv.innerHTML =
+                    `<div class="containerImg">
+                        <img src="${rutaImagen[0]}" class="imgClima" alt="...">
+                        <p class="card-text">${estadoTiempo[0]}</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${responseJson.name}</h5>
+                        <p class="card-text">Temperatura: ${Math.floor(responseJson.main.temp)}º</p>                                          
+                    </div>`                
+            }
+        })       
+    })    
+}   
 //<-------------------------------------------->//
+const reiniciarTareas = document.querySelector('.reload')
+reiniciarTareas.addEventListener('click', () => {
+    const max = 40
+    const min = 1
+    const numero1 = Math.floor((Math.random() * (max - min + 1)) + min)
+    const numero2 = Math.floor((Math.random() * (max - min + 1)) + min)
+    const resultado = numero1 + numero2    
+    
+    Swal.fire({
+        title: `Resuelve la siguiente suma: ${numero1}+${numero2} `,
+        html: 
+        '<input id="swal-input1" class="swal2-input">',
+        focusConfirm: false,               
+        confirmButtonText: 'Aceptar',        
+        preConfirm: () => {
+            let resultadoInput = document.getElementById('swal-input1').value            
+            return(resultadoInput)
+        },                       
+    }).then((resultadoInput) => {        
+        if (parseInt(resultadoInput.value) === resultado) {
+            console.log('es igual')
+            localStorage.clear()
+            location.reload()
+        }
+    })    
+})
 
 const fecha = new Date()
 let [hora, minutos, segundos] = [fecha.getHours(), fecha.getMinutes(), fecha.getSeconds()]
@@ -22,7 +76,7 @@ function checkTime(i) {
 }
 //<------<Fecha en español para que aprenda los dias, meses y años, hora y minutos>------->//
 function fechaHora() {
-    clima()
+    clima()    
     const fecha = new Date()
     let [hora, minutos, segundos] = [fecha.getHours(), fecha.getMinutes(), fecha.getSeconds()]
     hora = checkTime(hora)
@@ -36,8 +90,7 @@ function fechaHora() {
     let mesActual = mes[fecha.getMonth()]
     let añoActual = fecha.getFullYear()
     let date = diaActual + ", " + fechaActual + " " + mesActual + " " + añoActual
-    document.getElementById("fecha").innerHTML = date
-
+    document.getElementById("fecha").innerHTML = date    
     let refresh = setTimeout(function () { fechaHora() }, 500)
     return (hora, minutos, segundos)
 }
@@ -47,26 +100,7 @@ const llamar = function (callback) {
 }
 llamar(fechaHora)
 
-//<-------------------<API OPENWEATHERMAP>------------------->//
 
-const sectionTW = document.getElementById('stw')
-const cardDiv = document.getElementById('containerCard')
-function clima() {
-    const temperatura = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=sp&appid=5c77677b6df8e033cdb6f856910bbf53&units=metric`)
-        .then(response => response.json())
-        .then(info => {
-            sectionTW.append(cardDiv)
-            cardDiv.innerHTML =
-                `<div class="containerImg">
-                <img src="http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png" class="img-thumbnail" alt="...">
-                <p class="card-text">${info.weather[0].description}</p>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">${info.name}</h5>
-                <p class="card-text">Temperatura: ${info.main.temp}º</p>                                          
-            </div>`
-        })
-}
 
 //<-----------------<Vocales>-------------->//
 const vocales = 'aeiou'.split('')
@@ -85,7 +119,7 @@ function obtenerVocalesAleatorias(cantidad) {
     return vocales.slice(0, cantidad).join('')
 }
 
-//<-----<Funcion con evento para mostrar tarjetas y agregar botones en la parte trasera de la card>------>//
+//<-----<Funcion con evento para mostrar tarjetas y agregar botones en la parte trasera de la card segun la funcion horario>------>//
 let containerFrontBack = document.querySelectorAll('.containerFrontBack')
 let vocalesCompletas = []
 
@@ -139,7 +173,7 @@ function mostrarDiv(array) {
 }
 
 //<----------------<Funcion con condicional para mostrar tarjetas segun hora>------------->//
-//<--------<Arrays con tareas que debe realizar para poder utilizar la tablet>------>//
+//<--------<Arrays con tareas que debe realizar>------>//
 const tareasMañana = ['Levantarse', 'Baño', 'Dientes', 'Desayuno']
 const tareasMedia = ['Almuerzo', 'Dientes', 'Trampolin', 'Picar']
 const tareasTarde = ['Merienda', 'Jugar', 'Bañarse']
